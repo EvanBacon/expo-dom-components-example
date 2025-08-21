@@ -2,6 +2,13 @@
 
 <img width="1437" alt="Screenshot 2025-05-07 at 3 26 47 PM" src="https://github.com/user-attachments/assets/0bf05d30-b23c-490a-892c-a739d4061aa8" />
 
+
+## Launch your own
+
+[![Launch with Expo](https://github.com/expo/examples/blob/master/.gh-assets/launch.svg?raw=true)](https://launch.expo.dev/?github=https://github.com/EvanBacon/expo-dom-components-example)
+
+## Stack
+
 This project demonstrates how to use [Expo DOM components](https://docs.expo.dev/guides/dom-components/).
 
 This demo has a template UI from:
