@@ -8,15 +8,14 @@
     "ios": "expo run:ios",
     "lint": "expo lint",
     "predeploy:web": "expo export -p web",
-    "deploy:web": "eas deploy",
-    "prepare": "npx patch-package"
+    "deploy:web": "eas deploy"
   },
   "dependencies": {
     "@bacons/apple-colors": "^0.0.8",
     "@bacons/mdx": "^1.0.2",
     "@emoji-mart/data": "^1.2.1",
     "@emoji-mart/react": "^1.1.1",
-    "@expo/dom-webview": "^0.0.1-canary-20240912-1059f85",
+    "@expo/dom-webview": "~55.0.3",
     "@expo/vector-icons": "^15.0.2",
     "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-dialog": "^1.1.1",
@@ -63,7 +62,6 @@
     "expo-haptics": "~55.0.7",
     "expo-keep-awake": "~55.0.4",
     "expo-linking": "~55.0.6",
-    "expo-modules-core": "~55.0.10",
     "expo-notifications": "~55.0.9",
     "expo-router": "~55.0.0-preview.9",
     "expo-splash-screen": "~55.0.8",
@@ -89,6 +87,7 @@
     "react-native-svg": "15.15.3",
     "react-native-web": "^0.21.0",
     "react-native-webview": "13.16.0",
+    "react-native-worklets": "0.7.2",
     "recharts": "alpha",
     "sass": "^1.77.8",
     "tailwind-merge": "^2.4.0",
@@ -97,11 +96,14 @@
     "three": "0.164.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
     "@types/bun": "^1.1.8",
     "@types/react": "~19.2.10",
     "expo-atlas": "0.3.21",
     "typescript": "~5.9.2"
+  },
+  "overrides": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
   },
   "private": true
 }
