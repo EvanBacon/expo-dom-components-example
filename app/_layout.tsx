@@ -1,3 +1,4 @@
+import { label } from "@bacons/apple-colors";
 import { Slot, Icon, Label } from "expo-router";
 import { NativeTabs } from "expo-router/unstable-native-tabs";
 import * as SplashScreen from "expo-splash-screen";
@@ -7,7 +8,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   if (process.env.EXPO_OS === "web") return <Slot />;
   return (
-    <NativeTabs minimizeBehavior="onScrollDown">
+    <NativeTabs minimizeBehavior="onScrollDown" tintColor={label}>
       <NativeTabs.Trigger name="(index)">
         <Icon sf={{ default: "house", selected: "house.fill" }} />
         <Label>Dashboard</Label>
