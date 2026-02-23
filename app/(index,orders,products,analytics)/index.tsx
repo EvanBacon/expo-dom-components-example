@@ -1,7 +1,8 @@
 // This component is platform-specific.
 
 import Dashboard from "@/components/shad/dashboard";
-import { ScreenHeader } from "@/components/screen-header";
+import { ProfileButton } from "@/components/screen-header";
+import { Stack } from "expo-router";
 import * as Notifications from "expo-notifications";
 import React from "react";
 import { useScrollRef } from "@/lib/tab-to-top";
@@ -34,7 +35,30 @@ export default function IndexRoute() {
           },
         }}
       />
-      <ScreenHeader title="Dashboard" large search />
+      <DashboardHeader />
+    </>
+  );
+}
+
+function DashboardHeader() {
+  return (
+    <>
+      <Stack.Screen.Title large>Dashboard</Stack.Screen.Title>
+      <Stack.SearchBar placeholder="Search" />
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Menu icon="bell">
+          <Stack.Toolbar.MenuAction icon="bell.badge">
+            New notifications
+          </Stack.Toolbar.MenuAction>
+          <Stack.Toolbar.MenuAction icon="checkmark.circle">
+            Mark all as read
+          </Stack.Toolbar.MenuAction>
+          <Stack.Toolbar.MenuAction icon="gear">
+            Notification settings
+          </Stack.Toolbar.MenuAction>
+        </Stack.Toolbar.Menu>
+        <ProfileButton />
+      </Stack.Toolbar>
     </>
   );
 }

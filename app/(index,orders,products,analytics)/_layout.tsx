@@ -12,6 +12,8 @@ export default function RootLayout({ segment }: { segment: string }) {
     );
   }
 
+  const name = getRouteName(segment);
+
   return (
     <Stack
       screenOptions={{
@@ -24,6 +26,21 @@ export default function RootLayout({ segment }: { segment: string }) {
         headerBackButtonDisplayMode: "minimal",
       }}
     >
+      <Stack.Screen
+        name={name}
+        options={{
+          title: titles[name],
+          headerLargeTitle: true,
+          headerSearchBarOptions: {},
+
+          ...(name !== "index"
+            ? {
+                headerLargeTitle: undefined,
+                headerSearchBarOptions: undefined,
+              }
+            : {}),
+        }}
+      />
       <Stack.Screen
         name="settings"
         options={{
@@ -49,3 +66,14 @@ export const unstable_settings = {
     anchor: "analytics",
   },
 };
+
+const titles = {
+  index: "Dashboard",
+  orders: "Orders",
+  products: "Products",
+  analytics: "Analytics",
+};
+
+function getRouteName(segment: string) {
+  return segment.replace(/\((.+)\)/, "$1") as keyof typeof titles;
+}

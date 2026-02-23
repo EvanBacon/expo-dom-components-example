@@ -1,49 +1,49 @@
 "use dom";
 
 import React from "react";
-import GlslCanvas from "glslCanvas";
 
 interface ShaderCanvasProps {
   fragmentShader: string;
 }
 
 function ShaderCanvas({ fragmentShader }: ShaderCanvasProps) {
-  const canvasRef = React.useRef(null);
+  const canvasRef = React.useRef<HTMLCanvasElement>(null);
 
   React.useEffect(() => {
     const canvas = canvasRef.current;
-    const glsl = new GlslCanvas(canvas);
-    const pixelRatio = window.devicePixelRatio || 1;
+    if (!canvas) return;
 
-    try {
-      glsl.load(fragmentShader);
-      glsl.setUniform("u_resolution", [canvas.width, canvas.height]);
-    } catch (e) {
-      console.error("Shader compilation error:", e);
-    }
+    let glsl: any;
+    let cleanup = () => {};
 
-    const resizeCanvas = () => {
-      //   const width = window.innerWidth;
-      //   const height = window.innerHeight;
+    import("glslCanvas").then(({ default: GlslCanvas }) => {
+      glsl = new GlslCanvas(canvas);
+      const pixelRatio = window.devicePixelRatio || 1;
 
-      //   canvas.width = width * pixelRatio;
-      //   canvas.height = height * pixelRatio;
-      //   canvas.style.width = `${width}px`;
-      //   canvas.style.height = `${height}px`;
+      try {
+        glsl.load(fragmentShader);
+        glsl.setUniform("u_resolution", [canvas.width, canvas.height]);
+      } catch (e) {
+        console.error("Shader compilation error:", e);
+      }
 
-      glsl.setUniform("u_resolution", [
-        canvas.width * pixelRatio,
-        canvas.height * pixelRatio,
-      ]);
-    };
+      const resizeCanvas = () => {
+        glsl.setUniform("u_resolution", [
+          canvas.width * pixelRatio,
+          canvas.height * pixelRatio,
+        ]);
+      };
 
-    window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
 
-    return () => {
-      window.removeEventListener("resize", resizeCanvas);
-      glsl.destroy();
-    };
+      cleanup = () => {
+        window.removeEventListener("resize", resizeCanvas);
+        glsl.destroy();
+      };
+    });
+
+    return () => cleanup();
   }, [fragmentShader]);
 
   return (

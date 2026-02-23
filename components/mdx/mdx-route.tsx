@@ -66,17 +66,17 @@ export default function StoryWrapper({}: {
 function CustomCode(props: {
   children: string;
   // language-ts
-  className: string;
+  className?: string;
   // "app.config.ts"
-  metastring: string;
+  metastring?: string;
   // "html.pre"
-  parentName: string;
+  parentName?: string;
 }) {
   return (
     <Highlight
       theme={themes.vsLight}
       code={props.children.trim()}
-      language={props.className.replace(/^language-/, "")}
+      language={props.className?.replace(/^language-/, "") ?? "text"}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre style={style} className="pr-2">
