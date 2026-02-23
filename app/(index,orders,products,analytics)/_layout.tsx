@@ -1,8 +1,6 @@
 import { Link, Slot, Stack } from "expo-router";
-import { Image } from "react-native";
+import { Image, PlatformColor } from "react-native";
 import { TouchableImpact } from "@/components/touchable-impact";
-
-import * as AC from "@bacons/apple-colors";
 import { ShadLayoutFull } from "@/components/shad/shad-layout";
 
 export default function RootLayout({ segment }: { segment: string }) {
@@ -14,27 +12,17 @@ export default function RootLayout({ segment }: { segment: string }) {
     );
   }
 
-  // TODO: Add header bar
-  // return <Slot />;
-
   const name = getRouteName(segment);
   return (
     <Stack
       screenOptions={{
         headerTransparent: true,
-        headerBlurEffect: "prominent",
-        headerShadowVisible: true,
+        headerShadowVisible: false,
         headerLargeTitleShadowVisible: false,
-        headerStyle: {
-          // Hack to ensure the collapsed small header shows the shadow / border.
-          backgroundColor: "rgba(255,255,255,0.01)",
-        },
-        headerLargeStyle: {
-          backgroundColor: AC.systemGroupedBackground,
-        },
-        contentStyle: {
-          backgroundColor: AC.systemGroupedBackground,
-        },
+        headerLargeStyle: { backgroundColor: "transparent" },
+        headerTitleStyle: { color: PlatformColor("label") },
+        headerBlurEffect: "none",
+        headerBackButtonDisplayMode: "minimal",
       }}
     >
       <Stack.Screen
@@ -47,7 +35,6 @@ export default function RootLayout({ segment }: { segment: string }) {
             return <ProfileButton segment={segment} />;
           },
 
-          //
           ...(name !== "index"
             ? {
                 headerLargeTitle: undefined,
@@ -60,14 +47,9 @@ export default function RootLayout({ segment }: { segment: string }) {
         name="settings"
         options={{
           title: "Settings",
-          presentation: "modal",
-          headerTransparent: true,
-          headerBlurEffect: "prominent",
-          headerShadowVisible: true,
-          headerStyle: {
-            // Hack to ensure the collapsed small header shows the shadow / border.
-            backgroundColor: "rgba(255,255,255,0.01)",
-          },
+          presentation: "formSheet",
+          sheetGrabberVisible: true,
+          contentStyle: { backgroundColor: "transparent" },
         }}
       />
     </Stack>
