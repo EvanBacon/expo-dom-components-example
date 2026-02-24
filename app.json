@@ -46,7 +46,17 @@
       [
         "expo-router",
         {
-          "sitemap": false
+          "sitemap": false,
+          "redirects": [
+            {
+              "source": "/x/ios",
+              "destination": "https://testflight.apple.com/join/W2r9d14u"
+            },
+            {
+              "source": "/x/src",
+              "destination": "https://github.com/EvanBacon/expo-dom-components-example"
+            }
+          ]
         }
       ],
       "expo-asset",

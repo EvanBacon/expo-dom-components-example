@@ -1,33 +1,9 @@
 import Orders from "@/components/shad/orders";
 import { ProfileButton } from "@/components/screen-header";
 import { Stack } from "expo-router";
-import { useScrollRef } from "@/lib/tab-to-top";
 import * as Haptics from "expo-haptics";
 
 export default function OrdersRoute() {
-  const ref = useScrollRef<import("react-native-webview").WebView>();
-  return (
-    <>
-      <Orders
-        ref={ref}
-        onButtonClick={async (size: number) => {
-          if (process.env.EXPO_OS !== "web") {
-            Haptics.impactAsync(
-              [
-                Haptics.ImpactFeedbackStyle.Light,
-                Haptics.ImpactFeedbackStyle.Medium,
-                Haptics.ImpactFeedbackStyle.Heavy,
-              ][size]
-            );
-          }
-        }}
-      />
-      <OrdersHeader />
-    </>
-  );
-}
-
-function OrdersHeader() {
   return (
     <>
       <Stack.Screen.Title>Orders</Stack.Screen.Title>
@@ -58,6 +34,19 @@ function OrdersHeader() {
         </Stack.Toolbar.Menu>
         <ProfileButton />
       </Stack.Toolbar>
+      <Orders
+        onButtonClick={async (size: number) => {
+          if (process.env.EXPO_OS !== "web") {
+            Haptics.impactAsync(
+              [
+                Haptics.ImpactFeedbackStyle.Light,
+                Haptics.ImpactFeedbackStyle.Medium,
+                Haptics.ImpactFeedbackStyle.Heavy,
+              ][size],
+            );
+          }
+        }}
+      />
     </>
   );
 }

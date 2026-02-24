@@ -1,5 +1,4 @@
 import { Slot, Stack } from "expo-router";
-import { PlatformColor } from "react-native";
 import { ShadLayoutFull } from "@/components/shad/shad-layout";
 import { label } from "@bacons/apple-colors";
 
