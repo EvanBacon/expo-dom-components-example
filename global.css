@@ -1,7 +1,6 @@
-@import "tailwindcss";
-
-@source "./app/**/*.{js,ts,jsx,tsx,mdx}";
-@source "./components/**/*.{js,ts,jsx,tsx}";
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
 
 /* shadcn/ui theme colors - use 'inline' to extend default theme */
 @theme inline {
