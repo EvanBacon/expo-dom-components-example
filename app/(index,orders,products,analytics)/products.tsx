@@ -7,7 +7,7 @@ export default function ProductsRoute() {
   return (
     <>
       <Stack.Screen.Title>Products</Stack.Screen.Title>
-      <Stack.Toolbar placement="right">
+      <Stack.Toolbar placement="left">
         <Stack.Toolbar.Button icon="plus" onPress={() => {}} />
         <Stack.Toolbar.Menu icon="arrow.up.arrow.down">
           <Stack.Toolbar.Menu inline title="Sort By">
@@ -23,7 +23,11 @@ export default function ProductsRoute() {
             <Stack.Toolbar.MenuAction>Accessories</Stack.Toolbar.MenuAction>
           </Stack.Toolbar.Menu>
         </Stack.Toolbar.Menu>
-        <ProfileButton />
+      </Stack.Toolbar>
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.View>
+          <ProfileButton />
+        </Stack.Toolbar.View>
       </Stack.Toolbar>
       <Products
         onButtonClick={async (size: number) => {

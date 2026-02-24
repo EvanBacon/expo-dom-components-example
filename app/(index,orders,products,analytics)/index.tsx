@@ -14,7 +14,7 @@ export default function IndexRoute() {
       <Stack.Screen.Title large>Dashboard</Stack.Screen.Title>
       <Stack.SearchBar placeholder="Search" />
       <Stack.Toolbar placement="right">
-        <Stack.Toolbar.Menu icon="bell">
+        <Stack.Toolbar.Menu icon="bell" separateBackground>
           <Stack.Toolbar.MenuAction icon="bell.badge">
             New notifications
           </Stack.Toolbar.MenuAction>
@@ -25,7 +25,10 @@ export default function IndexRoute() {
             Notification settings
           </Stack.Toolbar.MenuAction>
         </Stack.Toolbar.Menu>
-        <ProfileButton />
+
+        <Stack.Toolbar.View separateBackground>
+          <ProfileButton />
+        </Stack.Toolbar.View>
       </Stack.Toolbar>
       <Dashboard
         notify={notify}

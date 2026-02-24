@@ -100,7 +100,7 @@ export default function DashboardRoute({
                 <Progress value={12} aria-label="12% increase" />
                 <Button
                   onClick={() => {
-                    router.navigate("/analytics");
+                    router.navigate("/alert");
                   }}
                 >
                   See More

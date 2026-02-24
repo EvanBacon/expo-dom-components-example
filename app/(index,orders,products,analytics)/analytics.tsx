@@ -30,7 +30,9 @@ export default function AnalyticsRoute() {
             Export as Image
           </Stack.Toolbar.MenuAction>
         </Stack.Toolbar.Menu>
-        <ProfileButton />
+        <Stack.Toolbar.View separateBackground>
+          <ProfileButton />
+        </Stack.Toolbar.View>
       </Stack.Toolbar>
       <ShadAnalytics
         onButtonClick={async (size: number) => {

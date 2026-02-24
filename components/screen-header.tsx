@@ -1,11 +1,16 @@
-import { Stack, useRouter } from "expo-router";
+import { Image } from "expo-image";
+import { router, Stack, useRouter } from "expo-router";
+import { Pressable } from "react-native";
 
 export function ProfileButton() {
-  const router = useRouter();
   return (
-    <Stack.Toolbar.Button
-      icon="person.crop.circle"
-      onPress={() => router.push("./settings")}
-    />
+    <Pressable onPress={() => router.push("./settings")}>
+      <Image
+        source={{
+          uri: "https://github.com/evanbacon.png",
+        }}
+        style={{ width: 36, height: 36, borderRadius: 18 }}
+      />
+    </Pressable>
   );
 }

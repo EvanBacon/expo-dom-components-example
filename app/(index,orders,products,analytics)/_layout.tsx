@@ -41,6 +41,14 @@ export default function RootLayout({ segment }: { segment: string }) {
         }}
       />
       <Stack.Screen
+        name="alert"
+        options={{
+          presentation: "formSheet",
+          sheetAllowedDetents: [0.25],
+          sheetGrabberVisible: true,
+        }}
+      />
+      <Stack.Screen
         name="settings"
         options={{
           title: "Settings",
