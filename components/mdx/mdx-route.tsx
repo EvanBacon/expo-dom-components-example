@@ -3,7 +3,7 @@
 import "@/global.css";
 
 import Story from "@/components/mdx/story.mdx";
-import { getDOMComponents, MDXComponents } from "@bacons/mdx";
+import { getDOMComponents } from "@bacons/mdx";
 import { Highlight, themes } from "prism-react-renderer";
 const webElements = getDOMComponents();
 
@@ -14,7 +14,7 @@ export default function StoryWrapper({}: {
   const Img = webElements.img;
   // Provide pure DOM elements for the MDX.
   return (
-    <MDXComponents
+    <Story
       components={{
         // Ensure we use default DOM elements instead of the default universal elements.
         // This is easier to style and results in simpler DOM elements for debugging.
@@ -57,9 +57,7 @@ export default function StoryWrapper({}: {
           <td {...props} className="border border-gray-300 p-2" />
         ),
       }}
-    >
-      <Story />
-    </MDXComponents>
+    />
   );
 }
 
