@@ -58,7 +58,7 @@ export function SideBarTab({
           href={href}
           className={clsx(
             "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8",
-            selected && "bg-accent text-accent-foreground"
+            selected && "bg-accent text-accent-foreground",
           )}
         >
           {icon}
@@ -87,7 +87,7 @@ export function SheetTab({
       href={href}
       className={clsx(
         "flex items-center gap-4 px-2.5 hover:text-foreground",
-        selected ? "text-foreground" : "text-muted-foreground"
+        selected ? "text-foreground" : "text-muted-foreground",
       )}
     >
       {icon}
@@ -104,7 +104,7 @@ export function SideNavigationBar() {
       <nav className="flex flex-col items-center gap-4 px-2 py-4">
         <Link
           href="/"
-          className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
+          className="flex group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
         >
           <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
           <span className="sr-only">Acme Inc</span>
