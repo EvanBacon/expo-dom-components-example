@@ -3,7 +3,7 @@
 import "@/global.css";
 
 import Story from "@/components/mdx/story.mdx";
-import { getDOMComponents } from "@bacons/mdx";
+import { getDOMComponents, MDXComponents } from "@bacons/mdx";
 import { Highlight, themes } from "prism-react-renderer";
 const webElements = getDOMComponents();
 
@@ -14,19 +14,25 @@ export default function StoryWrapper({}: {
   const Img = webElements.img;
   // Provide pure DOM elements for the MDX.
   return (
-    <Story
+    <MDXComponents
       components={{
         // Ensure we use default DOM elements instead of the default universal elements.
         // This is easier to style and results in simpler DOM elements for debugging.
         ...webElements,
         // Good tailwind defaults for MDX.
-        img: (props) => (
+        img: ({ components, ...props }) => (
           <Img {...props} className="max-w-full md:max-w-[59rem] rounded-md" />
         ),
-        h1: (props) => <h1 {...props} className="text-4xl font-bold mb-4" />,
-        h2: (props) => <h2 {...props} className="text-3xl font-bold mb-4" />,
-        hr: (props) => <hr {...props} className="my-4 border-gray-300" />,
-        p: (props) => <p {...props} className="mb-4" />,
+        h1: ({ components, ...props }) => (
+          <h1 {...props} className="text-4xl font-bold mb-4" />
+        ),
+        h2: ({ components, ...props }) => (
+          <h2 {...props} className="text-3xl font-bold mb-4" />
+        ),
+        hr: ({ components, ...props }) => (
+          <hr {...props} className="my-4 border-gray-300" />
+        ),
+        p: ({ components, ...props }) => <p {...props} className="mb-4" />,
         ul: (props) => <ul {...props} className="list-disc pl-4" />,
         ol: (props) => <ol {...props} className="list-decimal pl-4" />,
         li: ({ parentName, ...props }) => <li {...props} className="mb-2" />,
@@ -37,27 +43,29 @@ export default function StoryWrapper({}: {
             className="border-l-4 border-gray-300 pl-4 italic"
           />
         ),
-        pre: (props) => (
+        pre: ({ components, ...props }) => (
           <pre
             {...props}
             className="bg-white text-white p-4 rounded-md overflow-auto"
           />
         ),
         code: CustomCode,
-        table: (props) => (
+        table: ({ components, ...props }) => (
           <table
             {...props}
             className="table-auto w-full border-collapse border border-gray-300"
           />
         ),
-        th: ({ parentName, ...props }) => (
+        th: ({ parentName, components, ...props }) => (
           <th {...props} className="border border-gray-300 p-2" />
         ),
         td: ({ parentName, ...props }) => (
           <td {...props} className="border border-gray-300 p-2" />
         ),
       }}
-    />
+    >
+      <Story />
+    </MDXComponents>
   );
 }
 
