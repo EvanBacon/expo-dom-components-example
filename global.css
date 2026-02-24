@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@source "./app/**/*.{js,ts,jsx,tsx,mdx}";
+@source "./components/**/*.{js,ts,jsx,tsx}";
+
 /* shadcn/ui theme colors */
 @theme {
   --color-background: hsl(var(--background));
